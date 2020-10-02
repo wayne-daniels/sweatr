@@ -11,12 +11,42 @@
   color: rgb(112, 245, 3);
 }
 
-.btn-circle{
+.btn-circle-select{
   font-family: 'Oswald', sans-serif;
   text-align: center;
+  font-size: 1.5rem;
   color: white;
   background-color: #045BC2;
-  height: 2rem;
+  width: 75vw;
+  border-radius: 2rem;
+}
+
+.btn-circle-create{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+   font-size: 1.5rem;
+  color: white;
+  background-color: #01C3EE;
+  width: 75vw;
+  border-radius: 2rem;
+}
+
+.btn-circle-log{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #09EBB5;
+  width: 75vw;
+  border-radius: 2rem;
+}
+
+.btn-circle-guest{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #09EB48;
   width: 75vw;
   border-radius: 2rem;
 }
