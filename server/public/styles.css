@@ -1,0 +1,22 @@
+.title {
+  margin: 0;
+  padding: 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+.titleGr{
+  margin: 0;
+  padding: 0;
+  font-family: 'Oswald', sans-serif;
+  color: rgb(112, 245, 3);
+}
+
+.btn-circle{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: white;
+  background-color: #045BC2;
+  height: 2rem;
+  width: 75vw;
+  border-radius: 2rem;
+}
