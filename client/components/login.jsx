@@ -29,18 +29,6 @@ export default class Login extends React.Component {
       .catch(err => console.error(err));
   }
 
-  guestLogin() {
-    fetch('/api/guest/', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(result => result.json())
-      .then(data => this.props.userIdentification(data))
-      .catch(err => console.error(err));
-
-    this.props.setView('splash');
-  }
-
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
@@ -49,7 +37,6 @@ export default class Login extends React.Component {
     e.preventDefault();
     if (this.state.value === 'Select User') return;
     this.login(this.state.value);
-    this.props.setView('splash');
   }
 
   handleClick(e) {
@@ -81,20 +68,20 @@ export default class Login extends React.Component {
         </form>
 
         <div className='mb-5'>
-          <button className='btn-circle-create py-2 pl-1' name="username" id="username" form="login">
-            <option value='Select User' className="text-center">Create User Name</option>
+          <button className='btn-circle-create py-2 pl-1' name="username" id="username" form="login" onClick={this.handleClick}>
+            <option className="text-center">Create User Name</option>
           </button>
         </div>
 
         <div className='mb-5'>
-          <button className='btn-circle-log py-2 pl-1' name="username" id="username" form="login">
-            <option value='Select User' className="text-center">Log In</option>
+          <button className='btn-circle-log py-2 pl-1' name="login" id="login" form="login">
+            <option className="text-center">Log In</option>
           </button>
         </div>
 
         <div className='mb-5'>
-          <button className='btn-circle-guest py-2 pl-1' name="username" id="username" form="login">
-            <option value='Select User' className="text-center">Continue As Guest</option>
+          <button className='btn-circle-guest py-2 pl-1' name="guest" id="guest" form="login">
+            <option className="text-center">Continue As Guest</option>
           </button>
         </div>
 
