@@ -1,13 +1,20 @@
 import React from 'react';
 import Login from './login';
+import CreateUsername from './createUsername';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
-      isLoading: true
+      view: 'login'
     };
+    this.setView = this.setView.bind(this);
+  }
+
+  setView(viewMode) {
+    this.setState({
+      view: viewMode
+    });
   }
 
   componentDidMount() {
@@ -19,6 +26,11 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <Login />;
+    if (this.state.view === 'login') {
+      return <Login setView={this.setView} userIdentification={this.userIdentification} />;
+    }
+    if (this.state.view === 'signup') {
+      return <CreateUsername setView={this.setView} userIdentification={this.userIdentification} />;
+    }
   }
 }

@@ -50,3 +50,16 @@
   width: 75vw;
   border-radius: 2rem;
 }
+
+#userSignUp{
+  border-radius: 2rem;
+  font-size: 1.5rem;
+}
+
+#createUserName{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  color: black;
+}
