@@ -13,6 +13,23 @@ app.use(sessionMiddleware);
 
 app.use(express.json());
 
+app.get('/api/users', (req, res, next) => {
+  const sql = `
+  select *
+  from "users"
+  where not "userName" = 'Guest';
+  `;
+  db.query(sql)
+    .then(result => {
+      const users = result.rows;
+      if (!result) {
+        return res.status(404).json({ error: 'Cannot be found' });
+      }
+      res.status(200).json(users);
+    })
+    .catch(err => next(err));
+});
+
 app.get('/api/health-check', (req, res, next) => {
   db.query('select \'successfully connected\' as "message"')
     .then(result => res.json(result.rows[0]))
