@@ -63,3 +63,10 @@
   border-radius: 2rem;
   color: black;
 }
+
+.welcome{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+}

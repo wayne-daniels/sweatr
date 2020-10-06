@@ -29,6 +29,18 @@ export default class Login extends React.Component {
       .catch(err => console.error(err));
   }
 
+  guestLogin() {
+    fetch('/api/guest/', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(result => result.json())
+      .then(data => this.props.userIdentification(data))
+      .catch(err => console.error(err));
+
+    this.props.setView('welcome');
+  }
+
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
@@ -61,8 +73,8 @@ export default class Login extends React.Component {
 
         <form className='w-75 mx-auto' id='login' onSubmit={this.handleSubmit}>
           <div className='mb-5'>
-            <select className='btn-circle-select py-2 pl-1' name="username" id="username" form="login">
-              <option value='Select User' className="text-center">Select User</option>
+            <select className='btn-circle-select py-2 pl-1' name="username" id="username" form="login" value={this.state.value} onChange={this.handleChange}>
+              <option value='Select User' hidden disabled>Select User</option>
               {this.renderUsers()}
             </select>
           </div>

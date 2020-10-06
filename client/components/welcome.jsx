@@ -6,16 +6,16 @@ export default class Welcome extends React.Component {
     this.state = {
       promptCheck: true
     };
-    this.getLocation = this.getLocation.bind(this);
+
   }
 
   render() {
     return (
       <div className='mx-auto my-auto vw-100 vh-100 d-flex flex-column align-items-center justify-content-center'>
 
-        <div className='w-100 h-100 mb-3 d-flex flex-column align-items-center justify-content-start'>
-          <h1>Welcome,</h1>
-          <h1>{this.props.userInfo.userName}</h1>
+        <div className='w-100 mb-3 d-flex flex-row align-items-center justify-content-center'>
+          <h1 className='welcome'>Welcome {String.fromCharCode(160)}</h1>
+          <h1 className='welcome'>{this.props.userInfo.userName}</h1>
         </div>
 
         <div className='w-50 d-flex flex-row justify-content-center'>
@@ -26,7 +26,7 @@ export default class Welcome extends React.Component {
 
         <div className='mb-5'>
           <button className='btn-circle-select py-2 pl-1' name="username" id="username" form="login" onClick={this.handleClick}>
-            <option className="text-center">Create User Name</option>
+            <option className="text-center">Let`&apos`s Work Out</option>
           </button>
         </div>
 
