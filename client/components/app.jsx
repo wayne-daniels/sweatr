@@ -1,19 +1,28 @@
 import React from 'react';
 import Login from './login';
 import CreateUsername from './createUsername';
+import Welcome from './welcome';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      userInfo: {},
       view: 'login'
     };
     this.setView = this.setView.bind(this);
+    this.userIdentification = this.userIdentification.bind(this);
   }
 
   setView(viewMode) {
     this.setState({
       view: viewMode
+    });
+  }
+
+  userIdentification(userInfoObj) {
+    this.setState({
+      userInfo: userInfoObj
     });
   }
 
@@ -31,6 +40,9 @@ export default class App extends React.Component {
     }
     if (this.state.view === 'signup') {
       return <CreateUsername setView={this.setView} userIdentification={this.userIdentification} />;
+    }
+    if (this.state.view === 'welcome') {
+      return <Welcome setView={this.setView} setLocation={this.setLocation} userInfo={this.state.userInfo} locationPrompt={this.locationPrompt} locationPermission={this.state.locationPermission} />;
     }
   }
 }

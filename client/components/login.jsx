@@ -37,6 +37,7 @@ export default class Login extends React.Component {
     e.preventDefault();
     if (this.state.value === 'Select User') return;
     this.login(this.state.value);
+    this.props.setView('welcome');
   }
 
   handleClick(e) {
@@ -68,13 +69,13 @@ export default class Login extends React.Component {
         </form>
 
         <div className='mb-5'>
-          <button className='btn-circle-create py-2 pl-1' name="username" id="username" form="login" onClick={this.handleClick}>
+          <button className='btn-circle-create py-2 pl-1' name="username" id="signup" form="login" onClick={this.handleClick}>
             <option className="text-center">Create User Name</option>
           </button>
         </div>
 
         <div className='mb-5'>
-          <button className='btn-circle-log py-2 pl-1' name="login" id="login" form="login">
+          <button className='btn-circle-log py-2 pl-1' type="submit" form="login">
             <option className="text-center">Log In</option>
           </button>
         </div>
