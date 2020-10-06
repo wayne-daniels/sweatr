@@ -23,7 +23,7 @@ export default class Login extends React.Component {
       .then(userInfo => {
         if (userInfo.err) return this.setState({ validationMessage: userInfo.err });
         this.props.userIdentification(userInfo);
-        this.props.setView('splash');
+        this.props.setView('welcome');
       })
       .catch(err => console.error(err));
   }
