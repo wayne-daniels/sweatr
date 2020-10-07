@@ -29,7 +29,7 @@ export default class Login extends React.Component {
       .catch(err => console.error(err));
   }
 
-  guestLogin() {
+  loginGuest(userId) {
     fetch('/api/guest/', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' }
@@ -53,7 +53,7 @@ export default class Login extends React.Component {
   }
 
   handleClick(e) {
-    if (e.currentTarget.id === 'guest') return this.guestLogin();
+    if (e.currentTarget.id === 'guest') return this.loginGuest();
     if (e.currentTarget.id === 'signup') return this.props.setView('signup');
   }
 
@@ -93,7 +93,7 @@ export default class Login extends React.Component {
         </div>
 
         <div className='mb-5'>
-          <button className='btn-circle-guest py-2 pl-1' name="guest" id="guest" form="login">
+          <button className='btn-circle-guest py-2 pl-1' type="button" id="guest" form="login" onClick={this.handleClick}>
             <option className="text-center">Continue As Guest</option>
           </button>
         </div>
