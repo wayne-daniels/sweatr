@@ -15,7 +15,7 @@ export default class Welcome extends React.Component {
 
         <div className='w-100 mb-3 d-flex flex-row align-items-center justify-content-center'>
           <h1 className='welcome'>Welcome {String.fromCharCode(160)}</h1>
-          <h1 className='welcome'>{this.props.userInfo.userName}</h1>
+          <h1 className='welcome'>{this.props.userInfo.userName || 'Guest'}</h1>
         </div>
 
         <div className='w-50 d-flex flex-row justify-content-center'>
