@@ -29,7 +29,7 @@ export default class Login extends React.Component {
       .catch(err => console.error(err));
   }
 
-  guestLogin() {
+  loginGuest() {
     fetch('/api/guest/', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' }
@@ -53,7 +53,7 @@ export default class Login extends React.Component {
   }
 
   handleClick(e) {
-    if (e.currentTarget.id === 'guest') return this.guestLogin();
+    if (e.currentTarget.id === 'guest') return this.props.setView('loginGuest');
     if (e.currentTarget.id === 'signup') return this.props.setView('signup');
   }
 

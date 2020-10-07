@@ -2,6 +2,7 @@ import React from 'react';
 import Login from './login';
 import CreateUsername from './createUsername';
 import Welcome from './welcome';
+import LoginGuest from './loginGuest';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -43,6 +44,9 @@ export default class App extends React.Component {
     }
     if (this.state.view === 'welcome') {
       return <Welcome setView={this.setView} setLocation={this.setLocation} userInfo={this.state.userInfo} locationPrompt={this.locationPrompt} locationPermission={this.state.locationPermission} />;
+    }
+    if (this.state.view === 'loginGuest') {
+      return <LoginGuest setView={this.setView} setLocation={this.setLocation} userInfo={this.state.userInfo} locationPrompt={this.locationPrompt} locationPermission={this.state.locationPermission} />;
     }
   }
 }

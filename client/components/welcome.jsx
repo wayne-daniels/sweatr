@@ -26,7 +26,7 @@ export default class Welcome extends React.Component {
 
         <div className='mb-5'>
           <button className='btn-circle-select py-2 pl-1' name="username" id="username" form="login" onClick={this.handleClick}>
-            <option className="text-center">Let`&apos`s Work Out</option>
+            <option className="text-center">Let{String.fromCharCode(39)}s Work Out</option>
           </button>
         </div>
 
