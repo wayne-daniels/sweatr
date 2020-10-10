@@ -8,10 +8,15 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       userInfo: {},
-      view: 'login'
+      view: 'login',
+      index: null,
+      location: null,
+      locationPermission: null
     };
     this.setView = this.setView.bind(this);
     this.userIdentification = this.userIdentification.bind(this);
+    this.setLocation = this.setLocation.bind(this);
+    this.locationPrompt = this.locationPrompt.bind(this);
   }
 
   setView(viewMode) {
@@ -24,6 +29,20 @@ export default class App extends React.Component {
     this.setState({
       userInfo: userInfoObj
     });
+  }
+
+  setLocation(lat, long, keyword, radius) {
+    const locationObj = {
+      lat: lat,
+      long: long,
+      keyword: keyword,
+      radius: radius
+    };
+    this.setState({ location: locationObj, index: 0, cardStack: null });
+  }
+
+  locationPrompt(promptStatus) {
+    this.setState({ locationPermission: promptStatus });
   }
 
   componentDidMount() {
