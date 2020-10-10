@@ -8,7 +8,10 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       userInfo: {},
-      view: 'login'
+      view: 'login',
+      index: null,
+      location: null,
+      locationPermission: null
     };
     this.setView = this.setView.bind(this);
     this.userIdentification = this.userIdentification.bind(this);
