@@ -70,3 +70,37 @@
   font-size: 2rem;
   color: black;
 }
+
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: rgb(254, 59, 115);
+  height: 21px;
+  width: 21px;
+  margin-top: -8px;
+  border-radius: 99px;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 800px;
+  height: 8px;
+  background: #ddd;
+}
+
+.miles {
+  font-size: 1.5rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+.search{
+  border-radius: 2rem;
+  font-size: 1.125rem;
+  color: #ddd;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
