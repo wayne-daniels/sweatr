@@ -11,7 +11,7 @@ export default class Welcome extends React.Component {
 
   getLocation() {
     if (this.props.locationPermission === 'denied' && this.state.promptCheck) return this.setState({ promptCheck: false });
-    this.props.setView('profile');
+    this.props.setView('search');
   }
 
   componentDidMount() {

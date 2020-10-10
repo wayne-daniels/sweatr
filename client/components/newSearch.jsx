@@ -1,14 +1,19 @@
 import React from 'react';
 
-export default class Search extends React.Component {
+export default class NewSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       locationKeyword: (!this.props.location) ? '' : this.props.location.keyword,
       radius: (!this.props.location) ? this.props.userInfo.distanceRadius : this.props.location.radius
     };
+    this.handleChangeLocation = this.handleChangeLocation.bind(this);
     this.handleChangeDistance = this.handleChangeDistance.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleChangeLocation(event) {
+    this.setState({ locationKeyword: event.target.value });
   }
 
   handleChangeDistance(event) {
@@ -16,8 +21,7 @@ export default class Search extends React.Component {
   }
 
   handleClick(event) {
-    if (event.currentTarget.id === 'change') return this.props.setView('newSearch');
-    if (event.currentTarget.id === 'logout') return this.props.setView('login');
+    if (event.currentTarget.id === 'cancel') return this.props.setView('profile');
     if (event.currentTarget.id === 'submit') {
       this.props.setLocation(
         !this.props.location ? null : this.props.location.lat,
@@ -48,10 +52,13 @@ export default class Search extends React.Component {
         </div>
         <h1><i className="fas fa-dumbbell text-black mx-2 mb-5"></i></h1>
 
-        <div className='mb-5'>
-          <button className='btn-circle-select py-2 pl-1' name="username" id="submit" form="login" onClick={this.handleClick}>
-            <option className="text-center">Find a Gym in My Area</option>
-          </button>
+        <div className="my-2">
+          <div className="wrapper d-flex mt-3">
+            <i className="mag-glass2 fas fa-search fa-2x gray mt-2"></i>
+            <input className="search text-secondary shadow w-130 px-5 py-2 justify-content-left" placeholder="&#xF002; Enter City or Zip Code"
+              value={this.state.locationKeyword} onChange={this.handleChangeLocation}></input>
+            <i className="fas fa-map-marker-alt fa-3x text-pink ml-3 mb-2"></i>
+          </div>
         </div>
 
         <div className='mx-auto w-100 d-flex flex-column justify-content-center'>
@@ -74,13 +81,13 @@ export default class Search extends React.Component {
 
         <div className='mb-5'>
           <button className='btn-circle-create py-2 pl-1' name="username" id="change" form="login" onClick={this.handleClick}>
-            <option className="text-center">Pick Another Area</option>
+            <option className="text-center">Submit</option>
           </button>
         </div>
 
         <div className='mb-5'>
           <button className='btn-circle-log py-2 pl-1' id="logout" type="submit" form="logout" onClick={this.handleClick}>
-            <option className="text-center">Logout</option>
+            <option className="text-center">Cancel</option>
           </button>
         </div>
 
