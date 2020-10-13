@@ -21,7 +21,7 @@ export default class NewSearch extends React.Component {
   }
 
   handleClick(event) {
-    if (event.currentTarget.id === 'cancel') return this.props.setView('profile');
+    if (event.currentTarget.id === 'cancel') return this.props.setView('search');
     if (event.currentTarget.id === 'submit') {
       this.props.setLocation(
         !this.props.location ? null : this.props.location.lat,
@@ -54,10 +54,10 @@ export default class NewSearch extends React.Component {
 
         <div className="my-2">
           <div className="wrapper d-flex mt-3">
-            <i className="mag-glass2 fas fa-search fa-2x gray mt-2"></i>
-            <input className="search text-secondary shadow w-130 px-5 py-2 justify-content-left" placeholder="&#xF002; Enter City or Zip Code"
+            <i className="pin fas fa-map-marker-alt fa-2x text-pink ml-3 mb-2"></i>
+            <input id = "search-area" className="search text-secondary w-130 px-5 py-2 justify-content-left" placeholder="Enter City or Zip Code"
               value={this.state.locationKeyword} onChange={this.handleChangeLocation}></input>
-            <i className="fas fa-map-marker-alt fa-3x text-pink ml-3 mb-2"></i>
+            <i className="mag-glass fas fa-search fa-2x gray mt-2"></i>
           </div>
         </div>
 
@@ -86,7 +86,7 @@ export default class NewSearch extends React.Component {
         </div>
 
         <div className='mb-5'>
-          <button className='btn-circle-log py-2 pl-1' id="logout" type="submit" form="logout" onClick={this.handleClick}>
+          <button className='btn-circle-log py-2 pl-1' id="cancel" type="submit" form="logout" onClick={this.handleClick}>
             <option className="text-center">Cancel</option>
           </button>
         </div>

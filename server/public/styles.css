@@ -64,6 +64,19 @@
   color: black;
 }
 
+input[id="createUserName"]::-webkit-input-placeholder {
+  color: skyblue;
+}
+input[id="createUserName"]::-moz-placeholder {
+  color: skyblue;
+}
+input[id="createUserName"]::-ms-placeholder {
+  color: skyblue;
+}
+input[id="createUserName"]::placeholder {
+  color: skyblue;
+}
+
 .welcome{
   font-family: 'Oswald', sans-serif;
   text-align: center;
@@ -103,4 +116,34 @@ input[type=range]::-webkit-slider-runnable-track {
   color: #ddd;
   font-family: 'Oswald', sans-serif;
   text-align: center;
+}
+
+.wrapper{
+  position: relative;
+}
+
+.mag-glass{
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.5rem;
+  color: rgb(245, 152, 152);
+}
+
+.pin{
+  position: absolute;
+  top: 0.5rem;
+  color: rgb(245, 152, 152);
+}
+
+input[id="search-area"]::-webkit-input-placeholder {
+  color: skyblue;
+}
+input[id="search-area"]::-moz-placeholder {
+  color: skyblue;
+}
+input[id="search-area"]::-ms-placeholder {
+  color: skyblue;
+}
+input[id="search-area"]::placeholder {
+  color: skyblue;
 }
