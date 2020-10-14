@@ -94,6 +94,96 @@ app.patch('/api/guest/', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// app.get('/api/view/:yelpId', (req, res, next) => {
+//   const { yelpId } = req.params;
+//   getGymDetails(yelpId)
+//     .then(newObj => {
+//       const yelpId = newObj.id;
+//       const photosUrl = JSON.stringify(newObj.photos || []);
+//       const hours = JSON.stringify(newObj.hours || [{ open: [] }]);
+//       const reviews = JSON.stringify(newObj.reviews || []);
+//       const rating = newObj.rating;
+
+//       const sql = `
+//       update "gyms"
+//       set
+//       "photosUrl" = $2,
+//       "hours" = $3,
+//       "reviews" = $4,
+//       "rating" = $5
+//       where "yelpId" = $1;
+//       `;
+//       const gymRow = [yelpId, photosUrl, hours, reviews, rating];
+
+//       db.query(sql, gymRow)
+//         .then(result => {
+//           const sql = `
+//         select *
+//         from "gyms"
+//         where "yelpId" = $1;
+//         `;
+//           const value = [yelpId];
+//           return db.query(sql, value)
+//             .then(wholeRow => {
+//               const row = wholeRow.rows[0];
+//               res.status(200).json(row);
+//             });
+//         })
+//         .catch(err => next(err));
+//     });
+// });
+
+// app.post('/api/search/', (req, res, next) => {
+//   const latitude = req.body.latitude;
+//   const longitude = req.body.longitude;
+//   const location = (req.body.location || null);
+//   const term = req.body.term;
+//   const radius = req.body.radius * 1609;
+
+//   searchAllGyms(latitude, longitude, term, location, radius)
+
+//     .then(allGyms => {
+//       const insertPromises = [];
+//       for (let i = 0; i < allGyms.length; i++) {
+
+//         const gym = allGyms[i];
+//         const yelpId = gym.id;
+//         const gymName = (gym.name || '');
+//         const yelpUrl = gym.url;
+//         const storeImageUrl = gym.image_url;
+//         const distance = gym.distance;
+//         const photosUrl = [];
+//         const hours = [];
+//         const location = gym.location;
+//         const categories = gym.categories;
+//         const coordinates = gym.coordinates;
+//         const reviews = [];
+//         const price = (gym.price || '');
+//         const rating = gym.rating;
+
+//         const sql = `
+//       insert into  "restaurants" ("yelpId", "restaurantName", "yelpUrl", "storeImageUrl", "distance", "photosUrl", "hours", "location", "categories", "coordinates", "reviews", "price", "rating")
+//         values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+//       on conflict("yelpId")
+//       do nothing
+//       `;
+//         const val = [yelpId, gymName, yelpUrl, storeImageUrl, distance, JSON.stringify(photosUrl), JSON.stringify(hours), JSON.stringify(location),
+//           JSON.stringify(categories), JSON.stringify(coordinates), JSON.stringify(reviews), price, rating];
+
+//         const gymPromise = db.query(sql, val)
+//           .then(() => {
+//             return { yelpId, gymName, yelpUrl, storeImageUrl, distance, photosUrl, hours, location, categories, coordinates, reviews, price, rating };
+//           });
+//         insertPromises.push(restaurantPromise);
+//       }
+
+//       return Promise.all(insertPromises);
+//     })
+//     .then(gyms => res.status(200).json(gyms))
+//     .catch(err => next(err));
+
+// });
+
 app.get('/api/health-check', (req, res, next) => {
   db.query('select \'successfully connected\' as "message"')
     .then(result => res.json(result.rows[0]))

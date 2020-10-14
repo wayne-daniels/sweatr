@@ -4,6 +4,7 @@ import CreateUsername from './createUsername';
 import Welcome from './welcome';
 import Search from './search';
 import NewSearch from './newSearch';
+import Selections from './selections';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -70,6 +71,9 @@ export default class App extends React.Component {
     }
     if (this.state.view === 'newSearch') {
       return <NewSearch setView={this.setView} setLocation={this.setLocation} userInfo={this.state.userInfo} locationPrompt={this.locationPrompt} locationPermission={this.state.locationPermission} />;
+    }
+    if (this.state.view === 'selections') {
+      return <Selections setView={this.setView} setLocation={this.setLocation} userInfo={this.state.userInfo} locationPrompt={this.locationPrompt} locationPermission={this.state.locationPermission} />;
     }
   }
 }
