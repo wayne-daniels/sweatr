@@ -12,13 +12,13 @@ export default class Selections extends React.Component {
       showDetails: false
     };
     // this.handleClick = this.handleClick.bind(this);
-    // this.toLikedGym = this.toLikedRestaurant.bind(this);
+    // this.toLikedGym = this.toLikedGym.bind(this);
     // this.toCardStack = this.toCardStack.bind(this);
     // this.toLocationSetting = this.toLocationSetting.bind(this);
   }
 
   // componentDidMount() {
-  //   if (!this.state.restaurants) this.getRestaurants();
+  //   if (!this.state.gyms) this.getGyms();
   // }
 
   getGyms() {
@@ -36,7 +36,7 @@ export default class Selections extends React.Component {
       })
     })
       .then(res => res.json())
-      .then(data => this.setState({ restaurants: data, canClick: true }))
+      .then(data => this.setState({ gyms: data, canClick: true }))
       .catch(err => console.error(err));
   }
 
