@@ -147,3 +147,23 @@ input[id="search-area"]::-ms-placeholder {
 input[id="search-area"]::placeholder {
   color: skyblue;
 }
+
+.fa-heart{
+  color: rgb(216, 28, 28);
+}
+
+.fa-user{
+  color: rgb(5, 135, 241);
+}
+
+.fa-chevron-circle-left{
+  color: rgb(41, 241, 15);
+}
+
+.fa-chevron-circle-right{
+  color: rgb(41, 241, 15);
+}
+
+.fa-plus-circle{
+  color: rgb(41, 241, 15);
+}

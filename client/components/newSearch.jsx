@@ -22,13 +22,13 @@ export default class NewSearch extends React.Component {
 
   handleClick(event) {
     if (event.currentTarget.id === 'cancel') return this.props.setView('search');
-    if (event.currentTarget.id === 'submit') {
+    if (event.currentTarget.id === 'change') {
       this.props.setLocation(
         !this.props.location ? null : this.props.location.lat,
         !this.props.location ? null : this.props.location.long,
         !this.state.locationKeyword ? null : this.state.locationKeyword,
         this.state.radius);
-      this.props.setView('profile');
+      this.props.setView('selections');
     }
     if (event.target.id === 'currentLocation') {
       navigator.geolocation.getCurrentPosition(position =>

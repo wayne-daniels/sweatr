@@ -24,7 +24,7 @@ export default class Search extends React.Component {
         !this.props.location ? null : this.props.location.long,
         !this.state.locationKeyword ? null : this.state.locationKeyword,
         this.state.radius);
-      this.props.setView('profile');
+      this.props.setView('selections');
     }
     if (event.target.id === 'currentLocation') {
       navigator.geolocation.getCurrentPosition(position =>
