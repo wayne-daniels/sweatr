@@ -22,15 +22,8 @@ export default class Search extends React.Component {
       this.props.setLocation(
         !this.props.location ? null : this.props.location.lat,
         !this.props.location ? null : this.props.location.long,
-        !this.state.locationKeyword ? null : this.state.locationKeyword,
         this.state.radius);
       this.props.setView('selections');
-    }
-    if (event.target.id === 'currentLocation') {
-      navigator.geolocation.getCurrentPosition(position =>
-        this.props.setLocation(position.coords.latitude, position.coords.longitude, '', this.state.radius)
-      );
-      return this.props.setView('profile');
     }
   }
 
@@ -39,7 +32,7 @@ export default class Search extends React.Component {
       <div className='mx-auto my-auto vw-100 vh-100 d-flex flex-column align-items-center justify-content-center'>
 
         <div className='w-100 mb-3 d-flex flex-row align-items-center justify-content-center'>
-          <h1 className='welcome'>{this.props.userInfo.userName || 'Guest'}</h1>
+          <h1 className='welcome'>{this.props.userInfo.userName}</h1>
         </div>
 
         <div className='w-50 d-flex flex-row justify-content-center'>

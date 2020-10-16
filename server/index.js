@@ -69,6 +69,29 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/users/:userId', (req, res, next) => {
+  const { userId } = req.params;
+  if (!parseInt(userId, 10)) {
+    return res.status(400).json({ error: '"userId" must be a positive integer' });
+  }
+  const sql = `
+  select *
+  from "users"
+  where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      const user = result.rows[0];
+      if (!user) {
+        res.status(404).json({ error: `Cannot find user with "userId" ${userId}` });
+      } else {
+        res.status(200).json(user);
+      }
+    })
+    .catch(err => next(err));
+});
+
 app.patch('/api/guest/', (req, res, next) => {
   const sqlUpdate = `
     update "users"

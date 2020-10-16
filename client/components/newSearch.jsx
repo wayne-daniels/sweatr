@@ -30,12 +30,6 @@ export default class NewSearch extends React.Component {
         this.state.radius);
       this.props.setView('selections');
     }
-    if (event.target.id === 'currentLocation') {
-      navigator.geolocation.getCurrentPosition(position =>
-        this.props.setLocation(position.coords.latitude, position.coords.longitude, '', this.state.radius)
-      );
-      return this.props.setView('profile');
-    }
   }
 
   render() {
