@@ -69,6 +69,29 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/users/:userId', (req, res, next) => {
+  const { userId } = req.params;
+  if (!parseInt(userId, 10)) {
+    return res.status(400).json({ error: '"userId" must be a positive integer' });
+  }
+  const sql = `
+  select *
+  from "users"
+  where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      const user = result.rows[0];
+      if (!user) {
+        res.status(404).json({ error: `Cannot find user with "userId" ${userId}` });
+      } else {
+        res.status(200).json(user);
+      }
+    })
+    .catch(err => next(err));
+});
+
 app.patch('/api/guest/', (req, res, next) => {
   const sqlUpdate = `
     update "users"
@@ -152,29 +175,26 @@ app.post('/api/search/', (req, res, next) => {
         const yelpId = gym.id;
         const gymName = (gym.name || '');
         const yelpUrl = gym.url;
-        const storeImageUrl = gym.image_url;
+        const gymImageUrl = gym.image_url;
         const distance = gym.distance;
         const photosUrl = [];
         const hours = [];
         const location = gym.location;
-        const categories = gym.categories;
         const coordinates = gym.coordinates;
         const reviews = [];
         const price = (gym.price || '');
         const rating = gym.rating;
 
         const sql = `
-      insert into  "gyms" ("yelpId", "gymName", "yelpUrl", "storeImageUrl", "distance", "photosUrl", "hours", "location", "categories", "coordinates", "reviews", "price", "rating")
-        values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
-      on conflict("yelpId")
-      do nothing
+      insert into  "gyms" ("yelpId", "gymName", "yelpUrl", "gymImageUrl", "distance", "photosUrl", "hours", "location", "coordinates", "reviews", "price", "rating")
+        values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
       `;
-        const val = [yelpId, gymName, yelpUrl, storeImageUrl, distance, JSON.stringify(photosUrl), JSON.stringify(hours), JSON.stringify(location),
-          JSON.stringify(categories), JSON.stringify(coordinates), JSON.stringify(reviews), price, rating];
+        const val = [yelpId, gymName, yelpUrl, gymImageUrl, distance, JSON.stringify(photosUrl), JSON.stringify(hours), JSON.stringify(location),
+          JSON.stringify(coordinates), JSON.stringify(reviews), price, rating];
 
         const gymPromise = db.query(sql, val)
           .then(() => {
-            return { yelpId, gymName, yelpUrl, storeImageUrl, distance, photosUrl, hours, location, categories, coordinates, reviews, price, rating };
+            return { yelpId, gymName, yelpUrl, gymImageUrl, distance, photosUrl, hours, location, coordinates, reviews, price, rating };
           });
         insertPromises.push(gymPromise);
       }

@@ -3,8 +3,8 @@ const apiKey = 'Bearer ' + process.env.REACT_APP_YELP_API_KEY;
 
 function searchAllGyms(lat, long, term, location, radius) {
   return fetch((location
-    ? `https://api.yelp.com/v3/businesses/search?location=${location}&term=${term}&radius=${radius}&limit=30`
-    : `https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${long}&radius=${radius}&term=${term}&limit=30`), {
+    ? `https://api.yelp.com/v3/businesses/search?location=${location}&term=gyms&radius=${radius}&limit=30`
+    : `https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${long}&radius=${radius}&term=gyms&limit=30`), {
 
     headers: {
       Authorization: apiKey

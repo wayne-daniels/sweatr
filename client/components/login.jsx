@@ -29,7 +29,7 @@ export default class Login extends React.Component {
       .catch(err => console.error(err));
   }
 
-  loginGuest() {
+  loginGuest(userId) {
     fetch('/api/guest/', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' }
