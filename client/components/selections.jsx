@@ -4,7 +4,7 @@ export default class Selections extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gyms: this.props.cardStack,
+      gyms: this.props.selections,
       details: null,
       index: this.props.index,
       canRewind: false,
@@ -66,8 +66,8 @@ export default class Selections extends React.Component {
   }
 
   toProfile() {
-    // this.props.saveCardStackPos(this.state.gyms, this.state.index);
-    this.props.setView('search');
+    this.props.saveCardStackPos(this.state.gyms, this.state.index);
+    this.props.setView('welcome');
   }
 
   toLocationSetting(event) {
