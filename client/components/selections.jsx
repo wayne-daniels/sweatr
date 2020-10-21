@@ -117,24 +117,24 @@ export default class Selections extends React.Component {
       );
     }
 
-    // if (this.state.showDetails) return <Details renderPrice={this.renderPrice} renderRating={this.renderRating} restaurant={this.state.details} />;
+    // if (this.state.showDetails) return <Details renderPrice={this.renderPrice} renderRating={this.renderRating} gym={this.state.details} />;
 
     return (
-      <div className='w-75 mx-auto d-flex flex-column align-items-center justify-content-center card rounded shadow font-weight-bold' style={{ height: '450px' }}>
-        <div className='w-100 h-100 text-center text-pink d-flex align-items-center justify-content-center'>
-          <div className='w-50'>{this.renderRating(this.state.gyms[this.state.index])}</div> |
+      <div className='w-75 mx-auto d-flex flex-column align-items-center justify-content-center card rounded font-weight-bold' style={{ height: '450px' }}>
+        <div className='ratings w-100 h-100 text-center d-flex align-items-center justify-content-center'>
+          <div className='w-50'>{this.renderRating(this.state.gyms[this.state.index])}</div>
           <div className='w-50'>{this.renderPrice(this.state.gyms[this.state.index])}</div>
         </div>
         <div className='w-100 h-100'>
           <img
             className='rounded hover effect1'
             id='details'
-            src={this.state.gyms[this.state.index].storeImageUrl}
+            src={this.state.gyms[this.state.index].gymImageUrl}
             alt={this.state.gyms[this.state.index].gymName}
             onClick={this.handleClick}
             style={{ objectFit: 'cover', height: '250px', width: '100%' }} />
         </div>
-        <div className='w-100 h-100 text-center text-pink font-weight-bold d-flex flex-column align-items-center justify-content-center'>
+        <div className='gyminfo w-100 h-100 text-center d-flex flex-column align-items-center justify-content-center'>
           <div>{this.state.gyms[this.state.index].gymName}</div>
           <div>{this.state.gyms[this.state.index].location.city}, {this.state.gyms[this.state.index].location.state}</div>
           <div><i className="fas fa-map-marker-alt mr-2"></i>{(this.state.gyms[this.state.index].distance * 0.000621371).toFixed(1)} mi</div>
