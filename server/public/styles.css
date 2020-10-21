@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Oswald', sans-serif;
-  color: rgb(112, 245, 3);
+  color: rgb(99, 206, 11);
 }
 
 .btn-circle-select{
@@ -166,4 +166,17 @@ input[id="search-area"]::placeholder {
 
 .fa-plus-circle{
   color: rgb(41, 241, 15);
+}
+
+.ratings{
+  color: rgb(216, 28, 28);
+}
+
+.gyminfo{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+
+.fa-map-marker-alt{
+  color: rgb(216, 28, 28);
 }
