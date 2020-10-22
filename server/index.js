@@ -119,6 +119,31 @@ app.patch('/api/guest/', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/signUp', (req, res, next) => {
+  const newUser = `
+  insert into "users" ("userName", "distanceRadius")
+  values ($1, $2)
+  returning *;
+  `;
+  const userName = req.body.userName;
+  const userValue = [userName, 5];
+
+  if (userName.length === 0) {
+    return res.status(400).json({ err: 'Please enter a username' });
+  }
+
+  db.query(newUser, userValue)
+    .then(user => {
+      if (user.rows.length === 0) {
+        return res.status(400).json({ err: 'User already exists' });
+      }
+      const [addedUser] = user.rows;
+      req.session.userInfo = addedUser;
+      return res.status(201).json(addedUser);
+    })
+    .catch(err => next(err));
+});
+
 app.get('/api/view/:yelpId', (req, res, next) => {
   const { yelpId } = req.params;
   getGymDetails(yelpId)

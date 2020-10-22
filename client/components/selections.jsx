@@ -40,8 +40,11 @@ export default class Selections extends React.Component {
       .catch(err => console.error(err));
   }
 
-  handleChange(event) {
-    this.setState({ gym: event.target.value });
+  getGymDetails(yelpId) {
+    fetch(`/api/view/${yelpId}`)
+      .then(res => res.json())
+      .then(data => this.setState({ details: data, showDetails: true }))
+      .catch(err => console.error(err));
   }
 
   handleClick(e) {
