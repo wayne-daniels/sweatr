@@ -1,4 +1,5 @@
 import React from 'react';
+import GymDetails from './gymDetails';
 
 export default class Selections extends React.Component {
   constructor(props) {
@@ -12,7 +13,6 @@ export default class Selections extends React.Component {
       showDetails: false
     };
     this.handleClick = this.handleClick.bind(this);
-    this.toLikedGym = this.toLikedGym.bind(this);
     this.toCardStack = this.toCardStack.bind(this);
     this.toLocationSetting = this.toLocationSetting.bind(this);
   }
@@ -40,8 +40,11 @@ export default class Selections extends React.Component {
       .catch(err => console.error(err));
   }
 
-  handleChange(event) {
-    this.setState({ gym: event.target.value });
+  getGymDetails(yelpId) {
+    fetch(`/api/view/${yelpId}`)
+      .then(res => res.json())
+      .then(data => this.setState({ details: data, showDetails: true }))
+      .catch(err => console.error(err));
   }
 
   handleClick(e) {
@@ -53,12 +56,6 @@ export default class Selections extends React.Component {
     if (e.currentTarget.id === 'user') return this.toProfile();
     if (e.currentTarget.id === 'likedRes') return this.toLikedGym();
     if (e.currentTarget.id === 'arrow-left') return this.toCardStack();
-  }
-
-  toLikedGym(e) {
-    this.props.saveCardStackPos(this.state.gyms, this.state.index);
-    this.props.getLikedGyms();
-    this.props.setView('likedGyms');
   }
 
   toCardStack() {
@@ -117,7 +114,7 @@ export default class Selections extends React.Component {
       );
     }
 
-    // if (this.state.showDetails) return <Details renderPrice={this.renderPrice} renderRating={this.renderRating} gym={this.state.details} />;
+    if (this.state.showDetails) return <GymDetails renderPrice={this.renderPrice} renderRating={this.renderRating} gym={this.state.details} />;
 
     return (
       <div className='w-75 mx-auto d-flex flex-column align-items-center justify-content-center card rounded font-weight-bold' style={{ height: '450px' }}>

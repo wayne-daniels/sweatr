@@ -63,13 +63,13 @@ export default class Login extends React.Component {
         </div>
 
         <div className='mb-5'>
-          <button className='btn-circle-create py-2 pl-1' name="username" id="username" form="login">
+          <button type="submit" form="userSignUp" className='btn-circle-create py-2 pl-1'>
             <option value='Select User' className="text-center">Submit</option>
           </button>
         </div>
 
         <div className='mb-5'>
-          <button className='btn-circle-log py-2 pl-1' name="username" id="username" type="reset" form="userSignUp">
+          <button type="reset" form="userSignUp" className='btn-circle-log py-2 pl-1'>
             <option value='Select User' className="text-center">Cancel</option>
           </button>
         </div>
