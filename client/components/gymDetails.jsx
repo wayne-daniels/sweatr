@@ -64,8 +64,8 @@ export default class GymDetails extends React.Component {
 
   render() {
     return (
-      <div className='mx-auto my-auto vw-80 vh-80 d-flex flex-column align-items-center justify-content-center'>
-        <div className='w-90 h-50 effect1'>
+      <div className='w-75 mb-5 d-flex flex-column align-items-center justify-content-center card rounded' style={{ height: '600px' }}>
+        <div className='w-100 h-50 effect1'>
           <img
             className='rounded hover' onClick={() => this.setState({ photoIndex: (this.state.photoIndex + 1) % this.props.gym.photosUrl.length })}
             src={this.props.gym.photosUrl[this.state.photoIndex]}
