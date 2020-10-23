@@ -180,3 +180,29 @@ input[id="search-area"]::placeholder {
 .fa-map-marker-alt{
   color: rgb(216, 28, 28);
 }
+
+.user-rating{
+  color: rgb(216, 28, 28);
+}
+
+.detail-name{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+
+.detail-rating{
+  color: rgb(216, 28, 28);
+}
+
+.detail-price{
+  font-family: 'Oswald', sans-serif;
+  color: rgb(216, 28, 28);
+}
+
+.detail-dist{
+  font-family: 'Oswald', sans-serif;
+}
+
+.detail-info{
+  font-family: 'Oswald', sans-serif;
+}

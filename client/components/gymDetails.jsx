@@ -1,4 +1,5 @@
 import React from 'react';
+/* global google */
 
 export default class GymDetails extends React.Component {
   constructor(props) {
@@ -6,18 +7,19 @@ export default class GymDetails extends React.Component {
     this.state = { infoIndex: this.props.gym.reviews.length, photoIndex: 0 };
   }
 
-  // componentDidMount() {
-  //   const map = new google.maps.Map(document.getElementById('map'), {
-  //     center: { lat: this.props.gym.coordinates.latitude, lng: this.props.gym.coordinates.longitude },
-  //     zoom: 18
-  //   });
+  componentDidMount() {
+    const map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: this.props.gym.coordinates.latitude, lng: this.props.gym.coordinates.longitude },
+      zoom: 18
+    });
 
-  //   const marker = new google.maps.Marker({
-  //     position: { lat: this.props.gym.coordinates.latitude, lng: this.props.gym.coordinates.longitude },
-  //     map: map,
-  //     title: 'Gym'
-  //   });
-  // }
+    // eslint-disable-next-line no-unused-vars
+    const marker = new google.maps.Marker({
+      position: { lat: this.props.gym.coordinates.latitude, lng: this.props.gym.coordinates.longitude },
+      map: map,
+      title: 'Gym'
+    });
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.gym !== this.props.gym) this.setState({ infoIndex: this.props.gym.reviews.length, photoIndex: 0 });
@@ -55,14 +57,14 @@ export default class GymDetails extends React.Component {
       <div className='col-11 d-flex flex-column align-items-center justify-content-center'>
         <div className='mb-2'>{this.props.gym.reviews[this.state.infoIndex].text}</div>
         <div className='mb-2'>{`- ${this.props.gym.reviews[this.state.infoIndex].user.name}`}</div>
-        <div className='mb-2'>{rating}</div>
+        <div className='user-rating mb-2'>{rating}</div>
       </div>
     );
   }
 
   render() {
     return (
-      <div className='w-75 mx-auto d-flex flex-column align-items-center justify-content-center card rounded shadow' style={{ height: '600px' }}>
+      <div className='w-75 mb-5 d-flex flex-column align-items-center justify-content-center card rounded' style={{ height: '600px' }}>
         <div className='w-100 h-50 effect1'>
           <img
             className='rounded hover' onClick={() => this.setState({ photoIndex: (this.state.photoIndex + 1) % this.props.gym.photosUrl.length })}
@@ -71,18 +73,18 @@ export default class GymDetails extends React.Component {
             style={{ objectFit: 'cover', objectPosition: 'center bottom', height: '200px', width: '100%' }} />
         </div>
         <div className='w-100 h-25 mt-2 d-flex flex-column details-text'>
-          <div className='w-100 h-100 text-pink font-weight-bold d-flex flex-column align-items-center justify-content-center'>
+          <div className='detail-name w-100 h-100 d-flex flex-column align-items-center justify-content-center'>
             <div className=''>{this.props.gym.gymName}</div>
             <div className=''>{this.props.gym.location.city}, {this.props.gym.location.state}</div>
           </div>
-          <div className='w-100 h-25 text-center text-pink font-weight-bold d-flex align-items-center justify-content-center'>
-            <div className='w-100'>{this.props.renderRating(this.props.gym)}</div> |
-            <div className='w-100'>{this.props.renderPrice(this.props.gym)}</div> |
-            <div className='w-100'><i className="fas fa-map-marker-alt mr-2"></i>{(this.props.gym.distance * 0.000621371).toFixed(1)} mi</div>
+          <div className='w-100 h-25 text-center d-flex align-items-center justify-content-center'>
+            <div className='detail-rating w-100'>{this.props.renderRating(this.props.gym)}</div> |
+            <div className='detail-price w-100'>{this.props.renderPrice(this.props.gym)}</div> |
+            <div className='detail-dist w-100'><i className="fas fa-map-marker-alt mr-2"></i>{(this.props.gym.distance * 0.000621371).toFixed(1)} mi</div>
           </div>
         </div>
         <div
-          className='w-100 h-75 row mb-2 text-center text-pink font-weight-bold d-flex flex-column align-items-center justify-content-center details-text hover effect2'
+          className='detail-info w-100 h-75 row mb-2 mt-2 text-center d-flex flex-column align-items-center justify-content-center details-text hover effect2'
           onClick={() => this.setState({ infoIndex: (this.state.infoIndex + 1) % (this.props.gym.reviews.length + 1) })}>
           {this.cycleInfo()}
         </div>
